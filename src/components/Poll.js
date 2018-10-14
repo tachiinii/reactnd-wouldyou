@@ -4,7 +4,15 @@ class Poll extends Component {
   render() {
     return (
       <div className='poll'>
-        Poll
+        <form>
+          <div className='poll-user'>Colen Wilson asks:</div>
+          <img src='' className='poll-user-img' />
+          <div className='question-intro'>Would you rather?</div>
+          <input type='radio' name='response' value='id1' /> Bat lefty
+          <div className='question-intro'>or...</div>
+          <input type='radio' name='response' value='id1' /> Bat lefty
+          <button>Submit</button>
+        </form>
       </div>
     )
   }

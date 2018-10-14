@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
 import Login from './Login'
-import QuestionsList from './QuestionsList'
-import Poll from './Poll'
-import LeaderBoard from './LeaderBoard'
+import Questions from './Questions'
+import Question from './Question'
+import AddQuestion from './AddQuestion'
+import Leaderboard from './Leaderboard'
 
 class App extends Component {
   render() {
@@ -11,13 +12,16 @@ class App extends Component {
       <div className="App">
         Would You Rather App
         <Route exact path='/' render={() => (
-          <QuestionsList />
+          <Questions />
         )} />
-        <Route path='/question' render={() => (
-          <Poll />
+        <Route path='/add' render={() => (
+          <AddQuestion />
         )} />
         <Route path='/leaderboard' render={() => (
-          <LeaderBoard />
+          <Leaderboard />
+        )} />
+        <Route path='/question' render={() => (
+          <Question />
         )} />
         <Login />
       </div>

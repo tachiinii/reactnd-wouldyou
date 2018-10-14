@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
+import QuestionsItem from './QuestionsItem'
 
 class QuestionsList extends Component {
   render() {
     return (
       <div className="questions-list">
-        QuestionsList
+        <QuestionsItem />
       </div>
     );
   }
 }
 
-export default QuestionsList;
+export default QuestionsList
