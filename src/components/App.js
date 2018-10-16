@@ -5,12 +5,14 @@ import Questions from './Questions'
 import Question from './Question'
 import AddQuestion from './AddQuestion'
 import Leaderboard from './Leaderboard'
+import Nav from './Nav'
 
 class App extends Component {
   render() {
     return (
       <div className="App">
         Would You Rather App
+        <Nav />
         <Route exact path='/' render={() => (
           <Questions />
         )} />
