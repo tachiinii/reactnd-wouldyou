@@ -7,8 +7,14 @@ class Questions extends Component {
     return (
       <div className="questions">
         <h2 className='page-title'>Questions</h2>
-        <QuestionsNav />
-        <QuestionsList />
+        <div className='card'>
+          <div className='card-header'>
+            <QuestionsNav />
+          </div>
+          <div className='card-body'>
+            <QuestionsList />
+          </div>
+        </div>
       </div>
     )
   }
