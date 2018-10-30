@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Card, CardBody } from 'reactstrap'
 import LeaderboardList from './LeaderboardList'
 
 class Leaderboard extends Component {
@@ -6,9 +7,11 @@ class Leaderboard extends Component {
     return (
       <div className='leaderboard'>
         <h2 className='page-title'>Leaderboard</h2>
-        <div className='leaderboard-list'>
-          <LeaderboardList/>
-        </div>
+        <Card className='leaderboard-list'>
+          <CardBody>
+            <LeaderboardList/>
+          </CardBody>
+        </Card>
       </div>
     )
   }

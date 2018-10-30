@@ -1,20 +1,23 @@
 import React, { Component } from 'react'
+import { Card, CardBody } from 'reactstrap'
 import QuestionsItemUser from './QuestionsItemUser'
 import QuestionsItemQuestion from './QuestionsItemQuestion'
 
 class QuestionsItem extends Component {
   render() {
     return (
-      <div className="card border-primary rounded questions-item">
-        <div className='row'>
-          <div className='col-auto'>
-            <QuestionsItemUser />
+      <Card color='primary' outline className="questions-item">
+        <CardBody>
+          <div className='row'>
+            <div className='col-auto'>
+              <QuestionsItemUser />
+            </div>
+            <div className='col'>
+              <QuestionsItemQuestion />
+            </div>
           </div>
-          <div className='col'>
-            <QuestionsItemQuestion />
-          </div>
-        </div>
-      </div>
+        </CardBody>
+      </Card>
     );
   }
 }

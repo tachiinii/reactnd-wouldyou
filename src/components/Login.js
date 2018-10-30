@@ -1,15 +1,16 @@
 import React, { Component } from 'react'
+import { Card, CardTitle, CardBody } from 'reactstrap'
 import LoginForm from './LoginForm'
 
 class Login extends Component {
   render() {
     return (
-      <div className='card text-center login'>
-        <div className='card-body'>
-          <h2 className='page-title'>Sign in</h2>
+      <Card className='login'>
+        <CardBody>
+          <CardTitle>Sign in</CardTitle>
           <LoginForm />
-        </div>
-      </div>
+        </CardBody>
+      </Card>
     )
   }
 }

@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { Route } from 'react-router-dom'
+import { Container } from 'reactstrap'
 import Login from './Login'
 import Questions from './Questions'
 import Question from './Question'
@@ -11,7 +12,7 @@ import '../App.css'
 class App extends Component {
   render() {
     return (
-      <div className="app container">
+      <Container className="app">
         <h1 className='app-title'>Would You Rather App</h1>
         <AppNavbar />
         <Route exact path='/' render={() => (
@@ -27,7 +28,7 @@ class App extends Component {
           <Question />
         )} />
         <Login />
-      </div>
+      </Container>
     );
   }
 }
