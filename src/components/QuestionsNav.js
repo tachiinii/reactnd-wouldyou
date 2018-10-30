@@ -1,16 +1,8 @@
 import React, { Component } from 'react'
 import {
-  TabContent,
-  TabPane,
   Nav,
   NavItem,
-  NavLink,
-  Card,
-  Button,
-  CardTitle,
-  CardText,
-  Row,
-  Col } from 'reactstrap'
+  NavLink } from 'reactstrap'
 import classnames from 'classnames'
 
 class QuestionsNav extends Component {
@@ -30,14 +22,24 @@ class QuestionsNav extends Component {
 
   render() {
     return (
-      <ul class="nav nav-tabs card-header-tabs">
-        <li class="nav-item">
-          <a class="nav-link active" href="#">Unanswered Questions</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link" href="#">Answered Questions</a>
-        </li>
-      </ul>
+      <Nav tabs className='card-header-tabs'>
+        <NavItem>
+          <NavLink
+            className={classnames({ active: this.state.activeTab === '1'})}
+            onClick={() => {this.toggle('1');}}
+          >
+            Unanswered Questions
+        </NavLink>
+        </NavItem>
+        <NavItem>
+          <NavLink
+            className={classnames({ active: this.state.activeTab === '2'})}
+            onClick={() => {this.toggle('2');}}
+          >
+            Answered Questions
+          </NavLink>
+        </NavItem>
+      </Nav>
     )
   }
 }

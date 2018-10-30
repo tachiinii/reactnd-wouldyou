@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Card, CardBody, CardText, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { Card, CardBody, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 class AddQuestion extends Component {
   render() {

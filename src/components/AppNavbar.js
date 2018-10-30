@@ -40,7 +40,12 @@ class AppNavbar extends Component {
             </Nav>
             <div className='user-nav ml-auto'>
               <span className='navbar-text user-greeting'>Hi Colen Wilson</span>
-              <button className='btn btn-outline-secondary'>Logout</button>
+              <button
+                className='btn btn-outline-secondary'
+                onClick={this.props.doLogout}
+              >
+                Logout
+              </button>
             </div>
           </Collapse>
         </Navbar>

@@ -8,7 +8,7 @@ class Login extends Component {
       <Card className='login'>
         <CardBody>
           <CardTitle>Sign in</CardTitle>
-          <LoginForm />
+          <LoginForm doLogin={this.props.doLogin} />
         </CardBody>
       </Card>
     )
