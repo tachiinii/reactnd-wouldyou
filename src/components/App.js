@@ -5,6 +5,7 @@ import AuthedContent from './AuthedContent'
 import '../App.css'
 
 class App extends Component {
+
   state = {
     authedUser: ''
   }
