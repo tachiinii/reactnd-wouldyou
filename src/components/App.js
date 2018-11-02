@@ -1,10 +1,17 @@
 import React, { Component } from 'react'
 import { Container } from 'reactstrap'
+import { BrowserRouter as Router } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { handleInitialData } from '../actions/shared'
 import Login from './Login'
 import AuthedContent from './AuthedContent'
 import '../App.css'
 
 class App extends Component {
+
+  componentDidMount() {
+    this.props.dispatch(handleInitialData())
+  }
 
   state = {
     authedUser: ''
@@ -19,17 +26,22 @@ class App extends Component {
   }
 
   render() {
-    console.log('authedUser: ',this.state.authedUser)
     return (
-      <Container className="app">
-        <h1 className='app-title'>Would You Rather App</h1>
-        { this.state.authedUser
-          ? <AuthedContent doLogout={this.handleLogout} />
-          : <Login doLogin={this.handleLogin} />
-        }
-      </Container>
+      <Router>
+        <Container className="app">
+          <h1 className='app-title'>Would You Rather App</h1>
+          { this.state.authedUser
+            ? <AuthedContent doLogout={this.handleLogout} />
+            : <Login doLogin={this.handleLogin} />
+          }
+        </Container>
+      </Router>
     );
   }
 }
 
-export default App;
+function mapStateToProps() {
+  return {}
+}
+
+export default connect(mapStateToProps)(App);
