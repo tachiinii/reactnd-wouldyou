@@ -1,23 +1,31 @@
 import React, { Component } from 'react'
 import { Form, Input } from 'reactstrap'
 import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
 
 class LoginForm extends Component {
 
+  handleLogin = (e) => {
+    this.props.dispatch(setAuthedUser(e.target.value))
+  }
+
   render() {
-    const { doLogin, users } = this.props
+    const { users } = this.props
 
     return (
       <Form className='login-form'>
         <Input
           type='select'
           bsSize='lg'
-          className='form-control-lg'
-          onChange={doLogin}
+          className='form-control form-control-lg'
+          onChange={this.handleLogin}
         >
           <option value=''>Select a user...</option>
-          {Object.keys(users).map((uid, index) => (
-            <option value={users[uid].id} key={users[uid].id}>
+          {Object.keys(users).map((uid) => (
+            <option
+              value={uid}
+              key={uid}
+            >
               {users[uid].name}
             </option>
           ))}

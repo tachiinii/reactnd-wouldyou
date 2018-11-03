@@ -1,7 +1,8 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import { Container } from 'reactstrap'
 import { BrowserRouter as Router } from 'react-router-dom'
 import { connect } from 'react-redux'
+import LoadingBar from 'react-redux-loading'
 import { handleInitialData } from '../actions/shared'
 import Login from './Login'
 import AuthedContent from './AuthedContent'
@@ -13,35 +14,28 @@ class App extends Component {
     this.props.dispatch(handleInitialData())
   }
 
-  state = {
-    authedUser: ''
-  }
-
-  handleLogin = (e) => {
-    this.setState({ authedUser: e.target.value })
-  }
-
-  handleLogout = () => {
-    this.setState({ authedUser: '' })
-  }
-
   render() {
     return (
       <Router>
-        <Container className="app">
+        <Fragment>
+          <LoadingBar />
+          <Container className="app">
           <h1 className='app-title'>Would You Rather App</h1>
-          { this.state.authedUser
-            ? <AuthedContent doLogout={this.handleLogout} />
-            : <Login doLogin={this.handleLogin} />
+          { this.props.authedUser !== null
+            ? <AuthedContent />
+            : <Login />
           }
-        </Container>
+          </Container>
+        </Fragment>
       </Router>
     );
   }
 }
 
-function mapStateToProps() {
-  return {}
+function mapStateToProps({ authedUser }) {
+  return {
+    authedUser,
+  }
 }
 
 export default connect(mapStateToProps)(App);

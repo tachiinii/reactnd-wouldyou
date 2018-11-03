@@ -4,9 +4,10 @@ import {
   Navbar,
   NavbarToggler,
   Nav,
-  NavItem,
-  NavLink } from 'reactstrap'
-
+  NavItem } from 'reactstrap'
+import { NavLink, withRouter } from 'react-router-dom'
+import { connect } from 'react-redux'
+import { setAuthedUser } from '../actions/authedUser'
 
 class AppNavbar extends Component {
 
@@ -21,6 +22,12 @@ class AppNavbar extends Component {
     });
   }
 
+  handleLogout = (e) => {
+    const { dispatch, history } = this.props
+    dispatch(setAuthedUser(null))
+    history.push('/')
+  }
+
   render() {
     return (
       <div>
@@ -29,20 +36,20 @@ class AppNavbar extends Component {
           <Collapse isOpen={this.state.isOpen} navbar>
             <Nav navbar>
               <NavItem>
-                <NavLink href="/">Home</NavLink>
+                <NavLink to='/' exact className='nav-link' activeClassName='active'>Home</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/add">New Question</NavLink>
+                <NavLink to='/add' className='nav-link' activeClassName='active'>New Question</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/leaderboard">Leaderboard</NavLink>
+                <NavLink to='/leaderboard' className='nav-link' activeClassName='active'>Leaderboard</NavLink>
               </NavItem>
             </Nav>
             <div className='user-nav ml-auto'>
-              <span className='navbar-text user-greeting'>Hi Colen Wilson</span>
+              <span className='navbar-text user-greeting'>Hi {this.props.username}</span>
               <button
                 className='btn btn-outline-secondary'
-                onClick={this.props.doLogout}
+                onClick={this.handleLogout}
               >
                 Logout
               </button>
@@ -54,4 +61,10 @@ class AppNavbar extends Component {
   }
 }
 
-export default AppNavbar
+function mapStateToProps({authedUser, users}) {
+  return {
+    username: users[authedUser].name
+  }
+}
+
+export default withRouter(connect(mapStateToProps)(AppNavbar))
