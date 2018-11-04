@@ -6,7 +6,7 @@ class Poll extends Component {
       <div className='poll'>
         <form>
           <div className='poll-user'>Colen Wilson asks:</div>
-          <img src='' className='poll-user-img' />
+          <img src='' className='poll-user-img' alt='' />
           <div className='question-intro'>Would you rather?</div>
           <input type='radio' name='response' value='id1' /> Bat lefty
           <div className='question-intro'>or...</div>

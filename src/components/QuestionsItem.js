@@ -10,10 +10,13 @@ class QuestionsItem extends Component {
         <CardBody>
           <div className='row'>
             <div className='col-auto'>
-              <QuestionsItemUser />
+              <QuestionsItemUser author={this.props.question.author} />
             </div>
             <div className='col'>
-              <QuestionsItemQuestion />
+              <QuestionsItemQuestion
+                id={this.props.question.id}
+                text={this.props.question.optionOne.text}
+              />
             </div>
           </div>
         </CardBody>

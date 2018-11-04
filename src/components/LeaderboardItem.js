@@ -9,7 +9,7 @@ class LeaderboardItem extends Component {
           <Row>
             <Col xs='1' className='score'>10</Col>
             <Col xs='1'>
-            <img src='' className='' />
+            <img src='' className='' alt='' />
             </Col>
             <Col xs='10' className='stats'>
               <strong>Colen Wilson</strong><br />

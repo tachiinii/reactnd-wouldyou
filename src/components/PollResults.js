@@ -5,7 +5,7 @@ class PollResults extends Component {
     return (
       <div className='poll-results'>
         <div className='poll-user'>Colen Wilson asks:</div>
-        <img src='' className='poll-user-img' />
+        <img src='' className='poll-user-img' alt='' />
         <div className='question-intro'>Would you rather?</div>
         <div className='score'>66%</div>
         <div className='response-text'>Bat lefty</div>
