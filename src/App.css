@@ -1,11 +1,24 @@
 .user-greeting {
   margin-right: 1em;
 }
-.questions-item {
+.questions-item,
+.leaderboard-item {
   margin-bottom: 1.25rem;
 }
 .questions-avatar {
   height: 100px;
   width: 100px;
   border-radius: 50px;
+}
+.leaderboard-item .col-col-auto {
+  margin: 0 .70rem;
+}
+.leaderboard-score {
+  font-size: 2.25rem;
+  font-weight: bold;
+}
+.leaderboard-avatar {
+  height: 60px;
+  width: 60px;
+  border-radius: 30px;
 }

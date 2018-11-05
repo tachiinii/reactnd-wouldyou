@@ -3,17 +3,25 @@ import { Card, CardBody, Row, Col } from 'reactstrap'
 
 class LeaderboardItem extends Component {
   render() {
+    const { user, score } = this.props
     return (
       <Card color='primary' outline className='leaderboard-item'>
         <CardBody>
           <Row>
-            <Col xs='1' className='score'>10</Col>
-            <Col xs='1'>
-            <img src='' className='' alt='' />
+            <Col xs='col-auto'>
+            <img
+              src={user.avatarURL}
+              className='leaderboard-avatar'
+              alt={`Photo of ${user.name}`}
+            />
             </Col>
-            <Col xs='10' className='stats'>
-              <strong>Colen Wilson</strong><br />
-              3 answered / 7 asked
+            <Col xs='col-auto'>
+              <span className='leaderboard-score'>{score.total}</span>
+              pts
+            </Col>
+            <Col className='leaderboard-stats'>
+              <strong>{user.name}</strong><br />
+              {score.numAnswers} answered / {score.numQuestions} asked
             </Col>
           </Row>
         </CardBody>

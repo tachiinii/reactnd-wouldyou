@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import Poll from './Poll'
 import PollResults from './PollResults'
 import QuestionNotFound from './QuestionNotFound'
@@ -18,4 +19,8 @@ class Question extends Component {
   }
 }
 
-export default Question
+function mapStateToProps({ authedUser, questions, users }) {
+
+}
+
+export default connect(mapStateToProps)(Question)
