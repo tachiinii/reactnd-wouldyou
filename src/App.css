@@ -1,6 +1,9 @@
 .user-greeting {
   margin-right: 1em;
 }
+.questions-item {
+  margin-bottom: 1.25rem;
+}
 .questions-avatar {
   height: 100px;
   width: 100px;

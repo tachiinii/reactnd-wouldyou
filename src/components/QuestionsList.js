@@ -4,19 +4,21 @@ import { TabContent, TabPane } from 'reactstrap'
 import QuestionsItem from './QuestionsItem'
 
 class QuestionsList extends Component {
+
   render() {
-    const { questions } = this.props
+    const { answered, unanswered, questions, activeTab } = this.props
 
     return (
-      <TabContent activeTab='1' className="questions-list">
+      <TabContent activeTab={activeTab} className="questions-list">
         <TabPane tabId='1'>
-          <h3>Answered</h3>
-          {Object.keys(questions).map((qid) => (
+          {unanswered.map((qid) => (
             <QuestionsItem question={questions[qid]} key={qid} />
           ))}
         </TabPane>
         <TabPane tabId='2'>
-          <h3>Answered</h3>
+          {answered.map((qid) => (
+            <QuestionsItem question={questions[qid]} key={qid} />
+          ))}
         </TabPane>
       </TabContent>
     );
@@ -24,9 +26,13 @@ class QuestionsList extends Component {
 }
 
 function mapStateToProps({ authedUser, questions, users }) {
+  const answered = Object.keys(questions).filter(qid => qid in users[authedUser].answers)
+  const unanswered = Object.keys(questions).filter(qid => !(qid in users[authedUser].answers))
+
   return {
+    answered,
+    unanswered,
     questions,
-    users,
   }
 }
 
