@@ -6,21 +6,24 @@ import QuestionNotFound from './QuestionNotFound'
 
 class Question extends Component {
   render() {
-    return (
-      <div className="question">
-        <h2 className='page-title'>Question Poll</h2>
-        <Poll />
-        <h2 className='page-title'>Question Results</h2>
-        <PollResults />
-        <h2 className='page-title'>Question Not Found</h2>
-        <QuestionNotFound />
-      </div>
-    )
+    const { qid, user, question } = this.props
+
+    if (question === undefined)
+      return (<QuestionNotFound />)
+    else if (question.id in user.answers)
+      return (<PollResults />)
+    else
+      return (<Poll />)
   }
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
-
+function mapStateToProps({ authedUser, questions, users }, props) {
+  const { qid } = props.match.params
+console.log('Question: ', qid)
+  return {
+    user: users[authedUser],
+    question: questions[qid],
+  }
 }
 
 export default connect(mapStateToProps)(Question)

@@ -22,3 +22,8 @@
   width: 60px;
   border-radius: 30px;
 }
+.poll-not-found-image {
+  height: 100px;
+  width: 100px;
+  margin: 0 .70rem;
+}

@@ -20,9 +20,7 @@ class AuthedContent extends Component {
         <Route path='/leaderboard' render={() => (
           <Leaderboard />
         )} />
-        <Route path='/question' render={() => (
-          <Question />
-        )} />
+        <Route path='/question/:qid' component={Question} />
       </div>
     )
   }

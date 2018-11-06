@@ -1,19 +1,36 @@
 import React, { Component } from 'react'
+import { withRouter } from 'react-router-dom'
+import { Card, CardBody, Row, Col } from 'reactstrap'
+import NotFoundImage from '../assets/question-not-found.jpg'
 
 class QuestionNotFound extends Component {
   render() {
     return (
-      <div className='question-not-found'>
-        <form>
-          <img src='' className='poll-user-img' alt='' />
-          <div className='question-intro'>
-            A question was not found for the specified location. Use the following button to create your own question.
-          </div>
-          <button>Add a New Question</button>
-        </form>
+      <div className="question">
+        <h2 className='page-title'>Question Not Found</h2>
+        <Card className='question-not-found'>
+          <CardBody>
+            <Row>
+              <Col xs='col-auto'>
+                <img src={NotFoundImage} className='poll-not-found-image' alt='Q' />
+              </Col>
+              <Col>
+                <div className='question-intro'>
+                  A question was not found for the specified location. Use the following button to create your own question.
+                </div>
+                <button
+                  className='btn btn-primary'
+                  onClick={() => this.props.history.push('/add')}
+                >
+                  Add a New Question
+                </button>
+              </Col>
+            </Row>
+          </CardBody>
+        </Card>
       </div>
     )
   }
 }
 
-export default QuestionNotFound
+export default withRouter(QuestionNotFound)
