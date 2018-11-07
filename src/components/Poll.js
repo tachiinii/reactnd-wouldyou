@@ -12,20 +12,27 @@ class Poll extends Component {
           <CardBody>
             <Row>
               <Col xs='col-auto'>
+                <div className='poll-user'>{author.name} asks:</div>
                 <img
                   src={author.avatarURL}
                   className='poll-avatar'
-                  alt={`Photo of ${author.name}`} />
-                <div className='poll-user'>{author.name} asks:</div>
+                  alt={`Photo of ${author.name}`}
+                />
               </Col>
               <Col>
-                <form>
-                  <div className='question-intro'>Would you rather?</div>
+                <h4 className='question-intro'>Would you rather?</h4>
+
+                <h5 className='poll-option'>
                   <input type='radio' name='response' value='optionOne' /> {question.optionOne.text}
-                  <div className='question-intro'>or...</div>
+                </h5>
+
+                <h4 className='question-intro'>or...</h4>
+
+                <h5 className='poll-option'>
                   <input type='radio' name='response' value='optionTwo' /> {question.optionTwo.text}
-                  <button className='btn btn-primary'>Save Question</button>
-                </form>
+                </h5>
+                <button className='btn btn-primary'>Save Vote</button>
+
               </Col>
             </Row>
           </CardBody>

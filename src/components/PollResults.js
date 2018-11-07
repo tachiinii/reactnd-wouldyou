@@ -5,8 +5,8 @@ class PollResults extends Component {
   render() {
     const { author, question, user } = this.props
     const totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
-    const optionOnePercent = (question.optionOne.votes.length / totalVotes) * 100
-    const optionTwoPercent = (question.optionTwo.votes.length / totalVotes) * 100
+    const optionOnePercent = Math.round((question.optionOne.votes.length / totalVotes) * 100)
+    const optionTwoPercent = Math.round((question.optionTwo.votes.length / totalVotes) * 100)
 console.log('PollResults: ', question)
     return (
       <div className="question">
@@ -25,7 +25,7 @@ console.log('PollResults: ', question)
               <Col>
                 <h4 className='question-intro'>Would you rather?</h4>
                 <h5 className='poll-option'>
-                  <strong>{question.optionOne.text}</strong>
+                  {question.optionOne.text}
                   {user.answers[question.id] === 'optionOne' &&
                     (<Badge color='success' className='poll-selection'>You selected</Badge>)
                   }
@@ -38,7 +38,7 @@ console.log('PollResults: ', question)
                 <h4 className='question-intro'>or...</h4>
 
                 <h5 className='poll-option'>
-                  <strong>{question.optionTwo.text}</strong>
+                  {question.optionTwo.text}
                   {user.answers[question.id] === 'optionTwo' &&
                     (<Badge color='success' className='poll-selection'>You selected</Badge>)
                   }
