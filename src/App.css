@@ -27,3 +27,17 @@
   width: 100px;
   margin: 0 .70rem;
 }
+.poll-not-found-image {
+  height: 120px;
+  width: 120px;
+  margin: 0 .70rem;
+}
+.poll-avatar {
+  height: 120px;
+  width: 120px;
+  border-radius: 60px;
+  margin: 0 .70rem;
+}
+.poll-score {
+  margin-left: 1.25rem;
+}

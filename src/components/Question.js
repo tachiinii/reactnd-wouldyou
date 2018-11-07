@@ -6,23 +6,37 @@ import QuestionNotFound from './QuestionNotFound'
 
 class Question extends Component {
   render() {
-    const { qid, user, question } = this.props
+    const { author, question, user } = this.props
 
     if (question === undefined)
-      return (<QuestionNotFound />)
+      return (
+        <QuestionNotFound />
+      )
     else if (question.id in user.answers)
-      return (<PollResults />)
+      return (
+        <PollResults
+          author={author}
+          question={question}
+          user={user}
+        />)
     else
-      return (<Poll />)
+      return (
+        <Poll
+          author={author}
+          question={question}
+          user={user}
+        />)
   }
 }
 
 function mapStateToProps({ authedUser, questions, users }, props) {
   const { qid } = props.match.params
 console.log('Question: ', qid)
+  const question = questions[qid]
   return {
     user: users[authedUser],
-    question: questions[qid],
+    author: users[question.author],
+    question: question,
   }
 }
 
