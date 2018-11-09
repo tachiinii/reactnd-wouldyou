@@ -12,7 +12,7 @@ class LeaderboardItem extends Component {
             <img
               src={user.avatarURL}
               className='leaderboard-avatar'
-              alt={`Photo of ${user.name}`}
+              alt={user.name}
             />
             </Col>
             <Col xs='col-auto'>

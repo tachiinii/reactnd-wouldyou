@@ -2,7 +2,26 @@ import React, { Component } from 'react'
 import { Card, CardBody, Button, Form, FormGroup, Label, Input } from 'reactstrap'
 
 class AddQuestion extends Component {
+
+  state = {
+    optionOne: '',
+    optionTwo: '',
+  }
+
+  handleChange = (e) => {
+    this.setState({
+      [e.target.name]: e.target.value
+    })
+  }
+
+  handleSubmit = (e) => {
+    e.preventDefault()
+
+    console.log('AddQuestion: (opt1 opt2) ', this.state)
+  }
+
   render() {
+    const { optionOne, optionTwo } = this.state
     return (
       <div className="question">
         <h2 className='page-title'>Add a Question</h2>
@@ -10,14 +29,30 @@ class AddQuestion extends Component {
           <CardBody>
             <Form>
               <FormGroup>
-                <Label for='option1'>Answer 1</Label>
-                <Input type='text' name='option1' placeholder='First option'/>
+                <Label for='optionOne'>Answer 1</Label>
+                <Input
+                  type='text'
+                  name='optionOne'
+                  placeholder='First option'
+                  onChange={this.handleChange}
+                />
               </FormGroup>
               <FormGroup>
-                <Label for='option2'>Answer 2</Label>
-                <Input type='text' name='option2' placeholder='Second option'/>
+                <Label for='optionTwo'>Answer 2</Label>
+                <Input
+                  type='text'
+                  name='optionTwo'
+                  placeholder='Second option'
+                  onChange={this.handleChange}
+                />
                 </FormGroup>
-              <Button color='primary'>Submit</Button>
+              <Button
+                color='primary'
+                disabled={optionOne === '' || optionTwo === ''}
+                onClick={this.handleSubmit}
+              >
+                Submit
+              </Button>
             </Form>
           </CardBody>
         </Card>

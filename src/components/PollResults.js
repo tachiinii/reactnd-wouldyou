@@ -19,7 +19,7 @@ console.log('PollResults: ', question)
                 <img
                   src={author.avatarURL}
                   className='poll-avatar'
-                  alt={`Photo of ${author.name}`}
+                  alt={author.name}
                 />
               </Col>
               <Col>
