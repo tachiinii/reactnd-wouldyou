@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {
   Nav,
   NavItem,
@@ -7,29 +7,25 @@ import {
 } from 'reactstrap'
 import classnames from 'classnames'
 
-class QuestionsNav extends Component {
-  render() {
-    return (
-      <Nav tabs className='card-header-tabs'>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: this.props.activeTab === '1'})}
-            onClick={() => {this.props.onToggle('1')}}
-          >
-            Unanswered Questions <Badge color='primary'>{this.props.unansweredCount}</Badge>
-        </NavLink>
-        </NavItem>
-        <NavItem>
-          <NavLink
-            className={classnames({ active: this.props.activeTab === '2'})}
-            onClick={() => {this.props.onToggle('2')}}
-          >
-            Answered Questions
-          </NavLink>
-        </NavItem>
-      </Nav>
-    )
-  }
-}
+const QuestionsNav = ({ activeTab, onToggle, unansweredCount }) => (
+  <Nav tabs className='card-header-tabs'>
+    <NavItem>
+      <NavLink
+        className={classnames({ active: activeTab === '1'})}
+        onClick={() => {onToggle('1')}}
+      >
+        Unanswered Questions <Badge color='primary'>{unansweredCount}</Badge>
+    </NavLink>
+    </NavItem>
+    <NavItem>
+      <NavLink
+        className={classnames({ active: activeTab === '2'})}
+        onClick={() => {onToggle('2')}}
+      >
+        Answered Questions
+      </NavLink>
+    </NavItem>
+  </Nav>
+)
 
 export default QuestionsNav
