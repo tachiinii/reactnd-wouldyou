@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { withRouter } from 'react-router-dom'
 import { Card, CardBody, Button, Form, FormGroup, Label, Input } from 'reactstrap'
-import { handleAddQuestion } from '../actions/questions'
+import { handleAddQuestion } from '../actions/shared'
 
 class AddQuestion extends Component {
 
@@ -22,11 +22,8 @@ class AddQuestion extends Component {
     const { dispatch, history } = this.props
     const { optionOne, optionTwo } = this.state
 
-    console.log('AddQuestion: (opt1 opt2) ', this.state)
-
     dispatch(handleAddQuestion(optionOne, optionTwo))
 
-    // TODO: return to '/'
     history.push('/')
   }
 
