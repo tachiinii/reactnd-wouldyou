@@ -2,11 +2,16 @@ import React, { Component } from 'react'
 import { Card, CardBody, Row, Col, Progress, Badge } from 'reactstrap'
 
 class PollResults extends Component {
+
+  getPercent(partial, total) {
+    return Math.round((partial / total) * 100)
+  }
+
   render() {
     const { author, question, user } = this.props
-    const totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
-    const optionOnePercent = Math.round((question.optionOne.votes.length / totalVotes) * 100)
-    const optionTwoPercent = Math.round((question.optionTwo.votes.length / totalVotes) * 100)
+    const optionOneVotes = question.optionOne.votes.length
+    const optionTwoVotes = question.optionTwo.votes.length
+    const totalVotes = optionOneVotes + optionTwoVotes
 
     return (
       <div className="question">
@@ -31,8 +36,8 @@ class PollResults extends Component {
                   }
                 </h5>
                 <div className='poll-score'>
-                  {optionOnePercent}% - {question.optionOne.votes.length} out of {totalVotes} votes
-                  <Progress value={optionOnePercent} />
+                  {this.getPercent(optionOneVotes, totalVotes)}% - {optionOneVotes} out of {totalVotes} votes
+                  <Progress value={this.getPercent(optionOneVotes, totalVotes)} />
                 </div>
 
                 <h4 className='question-intro'>or...</h4>
@@ -44,8 +49,8 @@ class PollResults extends Component {
                   }
                 </h5>
                 <div className='poll-score'>
-                  {optionTwoPercent}% - {question.optionTwo.votes.length} out of {totalVotes} votes
-                  <Progress value={optionTwoPercent} />
+                  {this.getPercent(optionTwoVotes, totalVotes)}% - {optionTwoVotes} out of {totalVotes} votes
+                  <Progress value={this.getPercent(optionTwoVotes, totalVotes)} />
                 </div>
               </Col>
             </Row>
