@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import {
   Nav,
   NavItem,
-  NavLink } from 'reactstrap'
+  NavLink,
+  Badge
+} from 'reactstrap'
 import classnames from 'classnames'
 
 class QuestionsNav extends Component {
@@ -14,7 +16,7 @@ class QuestionsNav extends Component {
             className={classnames({ active: this.props.activeTab === '1'})}
             onClick={() => {this.props.onToggle('1')}}
           >
-            Unanswered Questions
+            Unanswered Questions <Badge color='primary'>{this.props.unansweredCount}</Badge>
         </NavLink>
         </NavItem>
         <NavItem>

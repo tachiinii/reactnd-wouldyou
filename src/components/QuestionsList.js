@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { connect } from 'react-redux'
 import { TabContent, TabPane } from 'reactstrap'
 import QuestionsItem from './QuestionsItem'
 
@@ -25,15 +24,4 @@ class QuestionsList extends Component {
   }
 }
 
-function mapStateToProps({ authedUser, questions, users }) {
-  const answered = Object.keys(questions).filter(qid => qid in users[authedUser].answers)
-  const unanswered = Object.keys(questions).filter(qid => !(qid in users[authedUser].answers))
-
-  return {
-    answered,
-    unanswered,
-    questions,
-  }
-}
-
-export default connect(mapStateToProps)(QuestionsList)
+export default QuestionsList

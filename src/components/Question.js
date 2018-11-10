@@ -31,13 +31,19 @@ class Question extends Component {
 
 function mapStateToProps({ authedUser, questions, users }, props) {
   const { qid } = props.match.params
-  const question = questions[qid]
 
-  return {
-    user: users[authedUser],
-    author: users[question.author],
-    question: question,
+  if (qid in questions) {
+    const question = questions[qid]
+    return {
+      user: users[authedUser],
+      author: users[question.author],
+      question: question,
+    }
   }
+  else {
+    return {}
+  }
+
 }
 
 export default connect(mapStateToProps)(Question)

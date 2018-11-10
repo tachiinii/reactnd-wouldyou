@@ -27,7 +27,7 @@ class PollResults extends Component {
                 <h5 className='poll-option'>
                   {question.optionOne.text}
                   {user.answers[question.id] === 'optionOne' &&
-                    (<Badge color='success' className='poll-selection'>You selected</Badge>)
+                    (<Badge color='success' pill className='poll-selection'>You selected</Badge>)
                   }
                 </h5>
                 <div className='poll-score'>
@@ -40,7 +40,7 @@ class PollResults extends Component {
                 <h5 className='poll-option'>
                   {question.optionTwo.text}
                   {user.answers[question.id] === 'optionTwo' &&
-                    (<Badge color='success' className='poll-selection'>You selected</Badge>)
+                    (<Badge color='success' pill className='poll-selection'>You selected</Badge>)
                   }
                 </h5>
                 <div className='poll-score'>

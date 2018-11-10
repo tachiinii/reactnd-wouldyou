@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Card, CardHeader, CardBody } from 'reactstrap'
 import QuestionsList from './QuestionsList'
 import QuestionsNav from './QuestionsNav'
@@ -19,15 +20,26 @@ class Questions extends Component {
   }
 
   render() {
+    const { answered, unanswered, questions } = this.props
+
     return (
       <div className="questions">
         <h2 className='page-title'>Questions</h2>
         <Card>
           <CardHeader>
-            <QuestionsNav activeTab={this.state.activeTab} onToggle={this.toggle} />
+            <QuestionsNav
+              unansweredCount={unanswered.length}
+              activeTab={this.state.activeTab}
+              onToggle={this.toggle}
+            />
           </CardHeader>
           <CardBody>
-            <QuestionsList activeTab={this.state.activeTab} />
+            <QuestionsList
+              questions={questions}
+              answered={answered}
+              unanswered={unanswered}
+              activeTab={this.state.activeTab}
+            />
           </CardBody>
         </Card>
       </div>
@@ -35,4 +47,15 @@ class Questions extends Component {
   }
 }
 
-export default Questions
+function mapStateToProps({ authedUser, questions, users }) {
+  const answered = Object.keys(questions).filter(qid => qid in users[authedUser].answers)
+  const unanswered = Object.keys(questions).filter(qid => !(qid in users[authedUser].answers))
+
+  return {
+    answered,
+    unanswered,
+    questions,
+  }
+}
+
+export default connect(mapStateToProps)(Questions)
