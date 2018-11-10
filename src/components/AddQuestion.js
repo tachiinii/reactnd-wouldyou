@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom'
 import { Card, CardBody, Button, Form, FormGroup, Label, Input } from 'reactstrap'
+import { handleAddQuestion } from '../actions/questions'
 
 class AddQuestion extends Component {
 
@@ -16,8 +19,15 @@ class AddQuestion extends Component {
 
   handleSubmit = (e) => {
     e.preventDefault()
+    const { dispatch, history } = this.props
+    const { optionOne, optionTwo } = this.state
 
     console.log('AddQuestion: (opt1 opt2) ', this.state)
+
+    dispatch(handleAddQuestion(optionOne, optionTwo))
+
+    // TODO: return to '/'
+    history.push('/')
   }
 
   render() {
@@ -51,7 +61,7 @@ class AddQuestion extends Component {
                 disabled={optionOne === '' || optionTwo === ''}
                 onClick={this.handleSubmit}
               >
-                Submit
+                Add New Question
               </Button>
             </Form>
           </CardBody>
@@ -61,4 +71,4 @@ class AddQuestion extends Component {
   }
 }
 
-export default AddQuestion
+export default withRouter(connect()(AddQuestion))
