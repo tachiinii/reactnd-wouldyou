@@ -32,7 +32,6 @@ function mapStateToProps({ users }) {
 
   scores.sort((a,b) => (b.total - a.total))
 
-console.log('LeaderboardList: ', scores)
   return {
     scores,
     users,

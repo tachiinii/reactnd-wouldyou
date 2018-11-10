@@ -7,7 +7,7 @@ class PollResults extends Component {
     const totalVotes = question.optionOne.votes.length + question.optionTwo.votes.length
     const optionOnePercent = Math.round((question.optionOne.votes.length / totalVotes) * 100)
     const optionTwoPercent = Math.round((question.optionTwo.votes.length / totalVotes) * 100)
-console.log('PollResults: ', question)
+
     return (
       <div className="question">
         <h2 className='page-title'>Question Results</h2>

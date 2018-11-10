@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
+import { connect } from 'react-redux'
 import { Card, CardBody, Row, Col } from 'reactstrap'
+import { handleSaveAnswer } from '../actions/shared'
 
 class Poll extends Component {
 
@@ -17,12 +19,13 @@ class Poll extends Component {
   handleSubmit = (e) => {
     e.preventDefault()
     const { answer } = this.state
-    console.log('Poll submit: ', answer)
+    const { question, dispatch } = this.props
 
+    dispatch(handleSaveAnswer(answer, question.id))
   }
 
   render() {
-    const { author, question, user } = this.props
+    const { author, question } = this.props
 
     return (
       <div className="question">
@@ -63,6 +66,7 @@ class Poll extends Component {
                 <button
                   className='btn btn-primary'
                   onClick={this.handleSubmit}
+                  disabled={this.state.answer === ''}
                 >
                   Save Vote
                 </button>
@@ -76,4 +80,4 @@ class Poll extends Component {
   }
 }
 
-export default Poll
+export default connect()(Poll)

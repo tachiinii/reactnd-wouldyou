@@ -11,5 +11,5 @@ export function getInitialData() {
 }
 
 export function saveAnswer(info) {
-  _saveQuestionAnswer(info)
+  return _saveQuestionAnswer(info)
 }

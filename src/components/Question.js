@@ -31,8 +31,8 @@ class Question extends Component {
 
 function mapStateToProps({ authedUser, questions, users }, props) {
   const { qid } = props.match.params
-console.log('Question: ', qid)
   const question = questions[qid]
+
   return {
     user: users[authedUser],
     author: users[question.author],
