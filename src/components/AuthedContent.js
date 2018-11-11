@@ -1,25 +1,23 @@
 import React from 'react'
-import { Route } from 'react-router-dom'
+import { Switch, Route } from 'react-router-dom'
 import Questions from './Questions'
 import Question from './Question'
 import AddQuestion from './AddQuestion'
 import Leaderboard from './Leaderboard'
 import AppNavbar from './AppNavbar'
+import PageNotFound from './PageNotFound'
 
 const AuthedContent = props => {
   return(
     <div>
       <AppNavbar doLogout={props.doLogout} />
-      <Route exact path='/' render={() => (
-        <Questions />
-      )} />
-      <Route path='/add' render={() => (
-        <AddQuestion />
-      )} />
-      <Route path='/leaderboard' render={() => (
-        <Leaderboard />
-      )} />
-      <Route path='/question/:qid' component={Question} />
+      <Switch>
+        <Route exact path='/' component={Questions} />
+        <Route path='/add' component={AddQuestion} />
+        <Route path='/leaderboard' component={Leaderboard} />
+        <Route path='/question/:qid' component={Question} />
+        <Route component={PageNotFound} />
+      </Switch>
     </div>
   )
 }
