@@ -48,8 +48,13 @@ class Questions extends Component {
 }
 
 function mapStateToProps({ authedUser, questions, users }) {
-  const answered = Object.keys(questions).filter(qid => qid in users[authedUser].answers)
-  const unanswered = Object.keys(questions).filter(qid => !(qid in users[authedUser].answers))
+  const sorted = Object.keys(questions).sort((a, b) => (
+    questions[b].timestamp - questions[a].timestamp
+    ))
+  const answered = sorted
+    .filter(qid => qid in users[authedUser].answers)
+  const unanswered = sorted
+    .filter(qid => !(qid in users[authedUser].answers))
 
   return {
     answered,
